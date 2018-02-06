@@ -7,7 +7,7 @@ jobs:
       - checkout 
       - add_ssh_keys:
           fingerprints:
-            - "	50:18:c0:7d:e7:d8:39:9a:e1:fd:d4:92:c6:6e:fb:54"
+            - "50:18:c0:7d:e7:d8:39:9a:e1:fd:d4:92:c6:6e:fb:54"
       - run:
           command: git push
 
