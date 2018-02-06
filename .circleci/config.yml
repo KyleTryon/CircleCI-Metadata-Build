@@ -5,6 +5,6 @@ jobs:
       - image: 'circleci/node'
     steps:
       - run:
-        name: Container Memory
-        command: |
-          free -m
+          name: Container Memory
+          command: |
+            free -m
