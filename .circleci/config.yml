@@ -6,9 +6,8 @@ jobs:
       - image: circleci/node:8.9.3
 
     steps:
-      - run: sudo apt-get install locales
-      - run: locale -a
-      # - run: sudo update-locale LANG=fr_FR.UTF-8 LC_MESSAGES=fr_FR.UTF-8
+      - run: locale-gen fr_FR.UTF-8
+      - run: sudo update-locale LANG=fr_FR.UTF-8
       - run: echo $LANG
       - checkout
       - run: npm install
