@@ -1,19 +1,9 @@
 version: 2
 jobs:
   build:
-    filters:
-      branches:
-        only: develop
-    run: apt-get install locales
-    run: update-locale LANG=fr_FR.UTF-8 LC_MESSAGES=fr_FR.UTF-8
     docker:
       # specify the version you desire here
       - image: circleci/node:8.9.3
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
     environment:
       TZ: "/usr/share/zoneinfo/Europe/Paris"
       LANG: fr_FR.UTF-8
@@ -23,9 +13,11 @@ jobs:
     #working_directory: ~/repo
 
     steps:
+      - run: apt-get install locales
+      - run: update-locale LANG=fr_FR.UTF-8 LC_MESSAGES=fr_FR.UTF-8
+      - run: echo $LANG
       - checkout
       - run: npm install
       - run: echo $LANG
-      # run tests!
-      - run: npm run test.circle.ci
+
 
