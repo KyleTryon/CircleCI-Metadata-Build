@@ -13,8 +13,8 @@ jobs:
     #working_directory: ~/repo
 
     steps:
-      - run: apt-get install locales
-      - run: update-locale LANG=fr_FR.UTF-8 LC_MESSAGES=fr_FR.UTF-8
+      - run: sudo apt-get install locales
+      - run: sudo update-locale LANG=fr_FR.UTF-8 LC_MESSAGES=fr_FR.UTF-8
       - run: echo $LANG
       - checkout
       - run: npm install
