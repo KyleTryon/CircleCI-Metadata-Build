@@ -8,6 +8,8 @@ jobs:
     steps:
       - run: locale-gen fr_FR.UTF-8
       - run: sudo update-locale LANG=fr_FR.UTF-8
+      - run: locale -a
+      - run: cat /etc/default/locale
       - run: echo $LANG
       - checkout
       - run: npm install
