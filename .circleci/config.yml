@@ -4,13 +4,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.9.3
-    environment:
-      TZ: "/usr/share/zoneinfo/Europe/Paris"
-      LANG: fr_FR.UTF-8
-      LANGUAGE: fr_FR.UTF-8
-      LC_ALL: fr_FR.UTF-8
-      LC_NUMERIC: fr_FR.UTF-8
-    #working_directory: ~/repo
 
     steps:
       - run: sudo apt-get install locales
