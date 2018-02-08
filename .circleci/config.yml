@@ -3,16 +3,10 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.9.3
+     - image: sgrove/homebone
 
     steps:
-      - run: locale-gen fr_FR.UTF-8
-      # - run: sudo update-locale LANG=fr_FR.UTF-8
-      - run: locale -a
-      - run: cat /etc/default/locale
-      - run: echo $LANG
       - checkout
-      - run: npm install
-      - run: echo $LANG
+      - run: echo It works
 
 
