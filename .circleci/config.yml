@@ -1,19 +1,9 @@
 version: 2
-
 jobs:
   build:
     docker:
-      - image: wearejh/ci-build-env:deploys
-        environment:
-          MYSQL_TEST_HOST: 127.0.0.1
-          MYSQL_TEST_DATABASE: circle_test
-          MYSQL_TEST_USER: root
-          MYSQL_TEST_PASSWORD: root
-      - image: circleci/mysql:latest
-        environment:
-          MYSQL_ROOT_PASSWORD: root
-
-#    working_directory: /root/build
-      steps:
-        - checkout
-        - run: echo "win"
+      - image: circleci/<language>:<version TAG>
+      # This is a test
+    steps:
+      - checkout
+      - run: echo "Success"
