@@ -17,4 +17,35 @@ jobs:
 
     steps:
       - checkout
-      - run: echo "Win"
+      - run: echo "PASS 1"
+
+
+      # Restore Composer Cache
+      - restore_cache:
+          keys:
+            - jml-composer-{{ checksum "composer.lock" }}
+            - jml-composer-
+
+      # Restore Yarn Cache
+      - restore_cache:
+          keys:
+            - jml-yarn-{{ checksum "yarn.lock" }}
+            - jml-yarn-
+
+      # Dependencies
+      - run: composer install
+      - run: yarn && yarn run build-all
+
+      # Save Composer Cache
+      - save_cache:
+          key: jml-composer-{{ checksum "composer.lock" }}
+          paths:
+            - ~/.composer/cache
+
+      # Save Yarn Cache
+      - save_cache:
+          key: jml-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            
+      - run: echo "PASS 2"
