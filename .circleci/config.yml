@@ -1,12 +1,20 @@
 version: 2
+
 jobs:
   build:
     docker:
-      # specify the version you desire here
-     - image: sgrove/homebone
+      - image: wearejh/ci-build-env:deploys
+        environment:
+          MYSQL_TEST_HOST: 127.0.0.1
+          MYSQL_TEST_DATABASE: circle_test
+          MYSQL_TEST_USER: root
+          MYSQL_TEST_PASSWORD: root
+      - image: circleci/mysql:latest
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+
+    working_directory: /root/build
 
     steps:
       - checkout
-      - run: echo It works
-
-
+      - run: echo "Win"
