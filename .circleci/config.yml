@@ -47,5 +47,29 @@ jobs:
           key: jml-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-            
+
       - run: echo "PASS 2"
+
+  deploy:
+    docker:
+      - image: wearejh/ci-build-env:deploys
+
+    working_directory: /root/build
+
+    steps:
+      # Restore Build
+      - restore_cache:
+        key: jml-build-{{ .Revision }}
+
+      # Deploy
+      - deploy:
+          command: |
+            [[ -n "$CIRLCE_PULL_REQUEST" ]] && exit 0
+            if [ "${CIRCLE_BRANCH}" = "develop" ]; then
+                knock $HOST 123 234 345; dep ssh:preconnect dev -vvv
+                dep deploy dev -vvv
+                dep release:upgrade dev -vvv
+            fi
+            if echo ${CIRCLE_BRANCH} | grep 'release-.*'; then
+                echo "Deploy staging..."
+            fi
