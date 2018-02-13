@@ -6,4 +6,6 @@ jobs:
 #   This is a test
     steps:
       - checkout
-      - run: echo "Success"
+      - run:
+         name: Install tunnel to CrossBrowserTesting
+         command: npm install -g cbt_tunnels; TUNNEL_NAME="test"
