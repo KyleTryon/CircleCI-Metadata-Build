@@ -2,13 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node
+      - image: sgrove/homebone
+    resource_class: xlarge
 #   This is a test
     steps:
       - checkout
-      - run:
-         name: Install VueCLI as Global with sudo
-         command: sudo npm install -g @vue/cli
-      - run:
-         name: Install tunnel to CrossBrowserTesting
-         command: sudo npm install -g cbt_tunnels; TUNNEL_NAME="test"
