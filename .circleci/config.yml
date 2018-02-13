@@ -8,4 +8,4 @@ jobs:
       - checkout
       - run:
          name: Install tunnel to CrossBrowserTesting
-         command: npm install -g cbt_tunnels; TUNNEL_NAME="test"
+         command: sudo npm install -g cbt_tunnels; TUNNEL_NAME="test"
