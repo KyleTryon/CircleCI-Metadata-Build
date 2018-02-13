@@ -5,4 +5,4 @@ jobs:
       - image: sgrove/homebone
 #   This is a test 1
     steps:
-      - checkout
+      - run: echo "Success"
