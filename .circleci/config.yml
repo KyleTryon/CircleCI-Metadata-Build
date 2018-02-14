@@ -5,4 +5,5 @@ jobs:
       - image: node
 #   This is a test 1
     steps:
+      - setup_remote_docker
       - run: echo "Success"
