@@ -4,7 +4,19 @@ jobs:
     docker:
       - image: circleci/node
       - image: circleci/postgres
+        environment:
+          POSTGRES_USER: conductor
+          POSTGRES_DB: conductor_test
     steps:
       - run:
           command: sudo -u postgres psql -p 5432 -c "create user ubuntu with password '';"
           command: sudo -u postgres psql -p 5432 -c "alter user ubuntu with superuser;"
+      - run:
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
