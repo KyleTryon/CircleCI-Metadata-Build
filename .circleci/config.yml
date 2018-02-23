@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node
       - image: circleci/postgres
-        steps:
-          - run:
-            command: sudo -u postgres psql -p 5432 -c "create user ubuntu with password '';"
-            command: sudo -u postgres psql -p 5432 -c "alter user ubuntu with superuser;"
+    steps:
+      - run:
+          command: sudo -u postgres psql -p 5432 -c "create user ubuntu with password '';"
+          command: sudo -u postgres psql -p 5432 -c "alter user ubuntu with superuser;"
