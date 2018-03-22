@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node
-      - image: circleci/postgres
+      - image: microsoft/mssql-server-linux
         environment:
           POSTGRES_USER: 'conductor'
           POSTGRES_DB: 'conductor_test'
@@ -18,4 +18,4 @@ jobs:
             DOCKERIZE_VERSION: 'v0.6.0'
       - run:
           name: Wait for db
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+          command: dockerize -wait tcp://localhost:1433 -timeout 1m
