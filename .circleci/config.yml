@@ -20,4 +20,4 @@ jobs:
           command: dockerize -wait tcp://localhost:1433 -timeout 1m
       - run:
           name: Are you still there?
-          command: curl --retry 10 --retry-delay 5 -v http://localhost:1433
+          command: dockerize -wait tcp://localhost:1433 -timeout 1m
