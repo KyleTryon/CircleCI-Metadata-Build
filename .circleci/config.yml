@@ -5,8 +5,7 @@ jobs:
       - image: circleci/node
       - image: microsoft/mssql-server-linux
         environment:
-          POSTGRES_USER: 'conductor'
-          POSTGRES_DB: 'conductor_test'
+          - ACCEPT_EULA=Y
     steps:
       - run:
           name: install dockerize
