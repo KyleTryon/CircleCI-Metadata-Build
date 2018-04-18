@@ -3,8 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
-        environment:
-          - ACCEPT_EULA=Y
+
     steps:
       - run:
           name: hello
