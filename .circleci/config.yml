@@ -2,9 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk-browsers
+      - image: circleci/node
 
     steps:
       - run:
           name: hello
-          command: ping https://releases.hashicorp.com
+          command: |
+            curl -v https://releases.hashicorp.com \
+            apt-get install traceroute \
+            traceroute https://releases.hashicorp.com
