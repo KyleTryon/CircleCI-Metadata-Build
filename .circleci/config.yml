@@ -7,4 +7,4 @@ jobs:
     steps:
       - run:
           name: hello
-          command: echo hello
+          command: ping https://releases.hashicorp.com
