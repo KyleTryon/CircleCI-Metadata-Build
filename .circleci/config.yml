@@ -8,6 +8,6 @@ jobs:
           name: Prepare Environment
           command: |
               echo "Update ulimit"
-              sudo bash -c "ulimit -n 65535 && exec su $LOGNAME"
+              sudo "ulimit -n 65535"
               echo "Update max watchers"
               sudo sysctl fs.inotify.max_user_watches=1048576 | sudo tee -a /etc/sysctl.conf # increases the number of watches for telemetry watcher tests
