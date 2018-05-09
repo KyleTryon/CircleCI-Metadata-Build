@@ -6,6 +6,9 @@ jobs:
 
     steps:
       - run:
-          name: hello
+          name: Prepare Environment
           command: |
-            curl --silent --fail https://releases.hashicorp.com/packer/0.12.1/packer_0.12.1_linux_amd64.zip -o packer.zip 
+              echo "Update ulimit"
+              sudo bash -c "ulimit -n 65535 && exec su $LOGNAME"
+              echo "Update max watchers"
+              sudo sysctl fs.inotify.max_user_watches=1048576 | sudo tee -a /etc/sysctl.conf # increases the number of watches for telemetry watcher tests
