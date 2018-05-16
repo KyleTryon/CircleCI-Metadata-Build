@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node
-      - image: rabbitmq/3.6
+      - image: rabbitmq:3.6
       - image: circleci/mysql
     steps:
       - checkout
