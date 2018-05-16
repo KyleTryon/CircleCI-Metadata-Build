@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node
+      - image: circleci/rabbitmq
     steps:
       - checkout
       - run: echo "build"
