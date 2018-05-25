@@ -2,9 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node
-      - image: circleci/rabbitmq:3.6.6
-      - image: circleci/mysql
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       - run: echo "build"
