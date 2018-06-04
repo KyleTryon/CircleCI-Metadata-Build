@@ -8,7 +8,7 @@ jobs:
       - run: |
           mkdir echo-output
           cd echo-output
-          curl -vo myfile "ftp://speedtest:speedtest@ftp.otenet.gr/test5Gb-a.db"
+          curl -vo --progress-bar myfile "https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz"
       - persist_to_workspace:
           root: echo-output
           paths:
