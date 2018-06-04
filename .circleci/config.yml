@@ -8,7 +8,7 @@ jobs:
       - run: |
           mkdir echo-output
           cd echo-output
-          curl -o myfile "http://www.office.xerox.com/latest/SFTBR-04U.PDF"
+          curl -vo myfile "ftp://speedtest:speedtest@ftp.otenet.gr/test5Gb-a.db"
       - persist_to_workspace:
           root: echo-output
           paths:
