@@ -7,7 +7,8 @@ jobs:
       - checkout
       - run: |
           mkdir echo-output
-          curl "http://www.office.xerox.com/latest/SFTBR-04U.PDF" > ~/echo-output/myfile
+          cd echo-output
+          curl -o myfile "http://www.office.xerox.com/latest/SFTBR-04U.PDF"
       - persist_to_workspace:
           root: /
           paths:
