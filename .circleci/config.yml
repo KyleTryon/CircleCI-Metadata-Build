@@ -10,9 +10,9 @@ jobs:
           cd echo-output
           curl -o myfile "http://www.office.xerox.com/latest/SFTBR-04U.PDF"
       - persist_to_workspace:
-          root: /
+          root: echo-output
           paths:
-            - echo-output
+            - *
 
   test:
     docker:
