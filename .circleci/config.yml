@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          mkdir echo-output
           curl "http://www.office.xerox.com/latest/SFTBR-04U.PDF" > ~/echo-output/myfile
       - persist_to_workspace:
           root: /
@@ -26,4 +27,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test
+      - test:
+          requires:
+            - build
