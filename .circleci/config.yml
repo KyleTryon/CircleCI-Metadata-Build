@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl "http://www.office.xerox.com/latest/SFTBR-04U.PDF" > myfile
+          curl "http://www.office.xerox.com/latest/SFTBR-04U.PDF" > ~/echo-output/myfile
       - persist_to_workspace:
-          root: workspace
+          root: /
           paths:
             - echo-output
 
