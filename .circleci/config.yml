@@ -6,13 +6,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          mkdir echo-output
-          cd echo-output
-          curl -vo --progress-bar myfile "https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz"
-      - persist_to_workspace:
-          root: echo-output
-          paths:
-            - myfile
+          traceroute https://gcr.io
+
 
   test:
     docker:
@@ -20,9 +15,7 @@ jobs:
     steps:
       - checkout
       - run: echo "test"
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: /tmp/workspace
+
 workflows:
   version: 2
   build_and_test:
