@@ -2,12 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:14.04
+      - image: circleci/node
     steps:
       - checkout
+      - setup_remote_docker
       - run: |
           sudo apt-get update
           sudo apt-get upgrade
+      - run: docker build
 
 
   test:
