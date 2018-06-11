@@ -2,11 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: ubuntu:14.04
     steps:
       - checkout
       - run: |
-          traceroute https://gcr.io
+          sudo apt-get update
+          sudo apt-get upgrade
 
 
   test:
