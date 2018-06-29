@@ -5,6 +5,6 @@ jobs:
       - image: circleci/ruby:2.3.3-node-browsers
     steps:
       - checkout
-      - setup_remote_docker
       - run: |
-          apt list --installed
+          hostname
+          hostname x.com
