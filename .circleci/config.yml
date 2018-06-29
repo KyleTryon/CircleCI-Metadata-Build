@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run: |
           hostname
-          hostname x.com
+          sudo hostname x.com
