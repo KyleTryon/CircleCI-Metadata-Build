@@ -11,5 +11,5 @@ jobs:
     - checkout
     - run: npm install --verbose
     - run: |
-        free 
+        free -h
         cat /proc/meminfo
