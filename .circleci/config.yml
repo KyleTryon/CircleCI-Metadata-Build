@@ -11,8 +11,5 @@ jobs:
     - checkout
     - run: npm install --verbose
     - run: |
-        pwd
-        ls
-        cd cb-build
-        yarn lint
-        yarn build
+        free 
+        cat /proc/meminfo
