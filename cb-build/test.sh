@@ -1,0 +1,1 @@
+echo "You have exec permissions on /dev/shm"

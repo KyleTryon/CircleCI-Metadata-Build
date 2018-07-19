@@ -12,3 +12,4 @@ jobs:
     - run: |
         touch testfile
         ls
+    - run: cb-build/test.sh
