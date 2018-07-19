@@ -2,14 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/node:10-stretch-browsers
-    working_directory: ~/cb-build
-    environment:
-      NODE_ENV: 'production'
-      BUILD_DIR: ~/cb-build/dist
+    - image: circleci/php:7.2.7-fpm
+    working_directory: /dev/shm
     steps:
     - checkout
-    - run: npm install --verbose
     - run: |
-        free -h
-        cat /proc/meminfo
+        pwd
+        ls
+    - run: npm install --verbose
