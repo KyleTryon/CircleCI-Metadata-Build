@@ -9,4 +9,6 @@ jobs:
     - run: |
         pwd
         ls
-    - run: npm install --verbose
+    - run: |
+        touch testfile
+        ls
