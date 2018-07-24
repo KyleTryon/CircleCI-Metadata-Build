@@ -4,7 +4,7 @@ jobs:
     docker:
     - image: circleci/php:7.2.7-fpm
     working_directory: /dev/shm
-    resource_class: medium+
+    resource_class: large
     steps:
     - checkout
     - run: |
