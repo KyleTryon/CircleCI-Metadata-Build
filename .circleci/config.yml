@@ -7,4 +7,4 @@ jobs:
     resource_class: medium
     steps:
     - checkout
-    - run: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes
+    - run: cat /sys/fs/cgroup/memory/memory.memory.limit_in_bytes
