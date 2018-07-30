@@ -7,10 +7,4 @@ jobs:
     resource_class: large
     steps:
     - checkout
-    - run: |
-        pwd
-        ls
-    - run: |
-        touch testfile
-        ls
-    - run: dmesg -H | grep -in "Memory:"
+    - run: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes
