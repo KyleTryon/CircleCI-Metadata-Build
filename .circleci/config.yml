@@ -4,7 +4,7 @@ jobs:
     docker:
     - image: circleci/php:7.2.7-fpm
     working_directory: /dev/shm
-    resource_class: large
+    resource_class: medium+
     steps:
     - checkout
     - run: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes
