@@ -2,9 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/php:7.2.7-fpm
-    working_directory: /dev/shm
-    resource_class: medium
+      - image: circleci/node:8-browsers
     steps:
-    - checkout
-    - run: cat /sys/fs/cgroup/memory/memory.memory.limit_in_bytes
+      - checkout
+      - run: echo "ran"
