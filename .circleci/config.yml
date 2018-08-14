@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: quay.io/prometheus/busybox:latest
+      - image: busybox:latest
     steps:
       - checkout
       - run: echo "ran"
