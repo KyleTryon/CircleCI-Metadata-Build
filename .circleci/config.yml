@@ -1,8 +1,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: busybox:latest
+    machine: true
     steps:
       - checkout
-      - run: echo "ran"
+      - run: df -h
