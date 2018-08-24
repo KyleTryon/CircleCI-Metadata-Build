@@ -4,7 +4,7 @@ jobs: # a collection of steps
   deploy:
     docker:
       - image: circleci/python:2.7
-    shell: /bin/bash --login -eo pipeline
+    shell: /bin/bash --login
 
     steps:
       - run:
