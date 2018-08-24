@@ -1,7 +1,42 @@
-version: 2
-jobs:
-  build:
-    machine: true
+version: 2 # use CircleCI 2.0
+jobs: # a collection of steps
+
+  deploy:
+    docker:
+      - image: circleci/python:2.7
+
+    shell: /bin/bash -eol pipefail
+
     steps:
-      - checkout
-      - run: df -h
+      - run:
+          command: |
+            export TITI=`date +"%Y-%m-%d_%H-%M-%S"`
+            export TITO=`date +"%Y-%m-%d_%H-%M-%S"`
+            export TETE=$(date +"%Y-%m-%d_%H-%M-%S")
+
+      - run:
+          name: Set variables
+          command: |
+            date +"%Y-%m-%d_%H-%M-%S" > .warname
+            echo "export WAR_NAME=`cat .warname`" >> $BASH_ENV
+            source $BASH_ENV
+
+      - run:
+          name: echo war
+          command: echo ${WAR_NAME} ${TITI} ${TITO} ${TETE}
+
+      - run:
+          name: sleep
+          command: |
+            sleep 1
+
+      - run:
+          name: echo war
+          command: echo ${WAR_NAME} ${TITI} ${TITO} ${TETE}
+
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - deploy
