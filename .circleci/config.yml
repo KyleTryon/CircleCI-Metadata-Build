@@ -13,6 +13,7 @@ jobs: # a collection of steps
             export TITI=`date +"%Y-%m-%d_%H-%M-%S"`
             export TITO=`date +"%Y-%m-%d_%H-%M-%S"`
             export TETE=$(date +"%Y-%m-%d_%H-%M-%S")
+            echo ${TITI}
 
       - run:
           name: Set variables
