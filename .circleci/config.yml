@@ -24,7 +24,6 @@ jobs: # a collection of steps
           command: |
             date +"%Y-%m-%d_%H-%M-%S" > .warname
             echo "export WAR_NAME=`cat .warname`" >> $BASH_ENV
-            source $BASH_ENV
 
       - run:
           name: echo war
