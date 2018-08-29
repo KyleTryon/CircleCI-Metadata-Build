@@ -4,42 +4,13 @@ jobs: # a collection of steps
   deploy:
     docker:
       - image: circleci/python:2.7
-    shell: /bin/bash --login
-
     steps:
       - run:
-          command: |
-            export TITI=`date +"%Y-%m-%d_%H-%M-%S"`
-            export TITO=`date +"%Y-%m-%d_%H-%M-%S"`
-            export TETE=$(date +"%Y-%m-%d_%H-%M-%S")
-            echo "---"
-            echo hello ${TITI}
-            echo "---"
-            echo hello ${TITO}
-            echo "---"
-            $BASH_ENV >> ~/.bash_profile
-
-      - run:
-          name: Set variables
-          command: |
-            date +"%Y-%m-%d_%H-%M-%S" > .warname
-
-      - run:
-          name: echo war
-          command: echo ${WAR_NAME} ${TITI} ${TITO} ${TETE}
-
-      - run:
-          name: sleep
-          command: |
-            sleep 1
-
-      - run:
-          name: echo war
-          command: echo ${WAR_NAME} ${TITI} ${TITO} ${TETE}
-
-
+          name: echo test context
+          command: "A non-existing context was attached"
 workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - deploy
+      - deploy:
+          context: org-oneTest
