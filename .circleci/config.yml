@@ -7,7 +7,7 @@ jobs: # a collection of steps
     steps:
       - run:
           name: echo test context
-          command: "A non-existing context was attached"
+          command: echo "A non-existing context was attached"
 
       - store_artifacts:
           path: /tmp/artifact-1
