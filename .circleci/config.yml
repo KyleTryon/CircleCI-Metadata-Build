@@ -8,6 +8,11 @@ jobs: # a collection of steps
       - run:
           name: echo test context
           command: "A non-existing context was attached"
+
+      - store_artifacts:
+          path: /tmp/artifact-1
+          destination: artifact-file
+          when: on_fail
 workflows:
   version: 2
   test_and_deploy:
