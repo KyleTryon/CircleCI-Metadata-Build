@@ -17,5 +17,4 @@ workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - deploy:
-          context: org-oneTest
+      - deploy
