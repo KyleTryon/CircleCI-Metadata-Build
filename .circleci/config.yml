@@ -1,15 +1,10 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
 
-  deploy:
+  build:
     docker:
       - image: circleci/python:2.7
     steps:
       - run:
           name: echo test context
           command: echo "A non-existing context was attached"
-workflows:
-  version: 2
-  test_and_deploy:
-    jobs:
-      - deploy
