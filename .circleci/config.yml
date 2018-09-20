@@ -2,8 +2,7 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
 
   build:
-    docker:
-      - image: circleci/python:2.7
+    machine: true
     steps:
       - run:
           name: echo test context
