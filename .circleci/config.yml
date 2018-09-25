@@ -1,10 +1,22 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-
+version: 2
+jobs:
   build:
     docker:
-      - image: circleci/python:2.7
+      - image: circleci/node
     steps:
-      - run:
-          name: echo test context
-          command: echo "A non-existing context was attached"
+      - checkout
+      - run: echo "workflow1"
+  test:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: echo "workflow2"
+workflows:
+  version: 2
+  wf1:
+    jobs:
+      - build
+  wf2:
+    jobs:
+      - test
