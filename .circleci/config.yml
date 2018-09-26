@@ -7,3 +7,8 @@ jobs:
     steps:
       - run: echo hello
 
+experimental:
+  notify:
+    branches:
+      only:
+        - master
