@@ -1,23 +1,20 @@
 version: 2
+
+executors:
+  common_executor:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: coverwallet
+      - image: circleci/mongo:3.2-ram
+    working_directory: ~/coverwallet/my-coverwallet
+    shell: /bin/bash --login
+
 jobs:
   build:
-    docker:
-      - image: circleci/node
+    executor: common_executor
     steps:
-      - checkout
-      - run: echo "workflow1"
-  test:
-    docker:
-      - image: circleci/node
-    steps:
-      - checkout
-      - run: echo "workflow2"
-workflows:
-  version: 2
-  wf1:
-    jobs:
-      - build
-  wf2:
-    jobs:
-      - test
-#test
+      - run: echo "hello world"
