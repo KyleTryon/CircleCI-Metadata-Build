@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@0.1.0
+
 executors:
   python:
     parameters:
@@ -12,6 +15,7 @@ executors:
       - image: circleci/python:<< parameters.tag >>
     environment:
       MYPRECIOUS: << parameters.myspecialvar >>
+    parallelism: 2
 
 jobs:
   build:
@@ -21,3 +25,4 @@ jobs:
       myspecialvar: "myspecialvalue"  
     steps:
         - run: echo hello
+        - slack/status
