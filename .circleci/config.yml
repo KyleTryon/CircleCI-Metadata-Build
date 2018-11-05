@@ -1,28 +1,18 @@
 version: 2.1
 
-orbs:
-  slack: circleci/slack@0.1.0
-
-executors:
-  python:
-    parameters:
-      tag:
-        type: string
-        default: latest
-      myspecialvar:
-        type: string
-    docker:
-      - image: circleci/python:<< parameters.tag >>
-    environment:
-      MYPRECIOUS: << parameters.myspecialvar >>
-    parallelism: 2
-
 jobs:
   build:
-    executor:
-      name: python
-      tag: "2.7"
-      myspecialvar: "myspecialvalue"  
+    docker:
+      - image: "circleci/node"
     steps:
         - run: echo hello
-        - slack/status
+        - run: |
+              wget https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip
+              unzip chromedriver_linux64.zip
+              sudo mv chromedriver /usr/bin/chromedriver
+              sudo chown root:root /usr/bin/chromedriver
+              sudo chmod +x /usr/bin/chromedriver
+        - run:
+              name: Execute Chrome in Background
+              command: chromedriver --url-base=/wd/hub
+              background: true
