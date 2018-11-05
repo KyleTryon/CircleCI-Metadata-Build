@@ -14,5 +14,5 @@ jobs:
               sudo chmod +x /usr/bin/chromedriver
         - run:
               name: Execute Chrome in Background
-              command: chromedriver --url-base=/wd/hub
+              command: chromedriver --url-base=http://google.com
               background: true
