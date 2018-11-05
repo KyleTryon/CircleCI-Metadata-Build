@@ -7,3 +7,12 @@ jobs:
     steps:
         - checkout
         - run: which chromedriver
+        - run: chromedriver --version
+        - run: |
+              wget https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip
+              unzip chromedriver_linux64.zip
+              sudo mv chromedriver /usr/local/bin/chromedriver
+              sudo chown root:root /usr/local/bin/chromedriver
+              sudo chmod +x /usr/local/bin/chromedriver
+
+        - run: chromedriver --version
