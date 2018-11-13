@@ -1,18 +1,38 @@
 version: 2.1
+executors:
+    node8:
+        docker:
+            - image: circleci/node:8
+
+commands:
+    callhello:
+        steps:
+            - run:
+                name: Call HelloWorld
+                command: echo hello
 
 jobs:
-  build:
-    docker:
-      - image: "circleci/ruby:2.5.0-node-browsers"
-    steps:
-        - checkout
-        - run: which chromedriver
-        - run: chromedriver --version
-        - run: |
-              wget https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip
-              unzip chromedriver_linux64.zip
-              sudo mv chromedriver /usr/local/bin/chromedriver
-              sudo chown root:root /usr/local/bin/chromedriver
-              sudo chmod +x /usr/local/bin/chromedriver
+    build:
+        executor: node8
+        working_directory: ~/repo
 
-        - run: chromedriver --version
+        steps:
+            - callhello
+
+    hello:
+        executor: node8
+        working_directory: ~/repo
+
+        steps:
+            - run:
+                name: HelloWorld
+                command: echo "HelloWorld"
+
+workflows:
+    version: 2
+    build:
+        jobs:
+            - build
+    hello:
+        jobs:
+            - hello
