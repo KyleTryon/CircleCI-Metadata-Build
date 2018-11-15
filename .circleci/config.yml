@@ -5,12 +5,4 @@ jobs:
       - image: circleci/php:7.2.9-node-browsers
     steps:
         - run: |
-            sudo apt update &&
-            echo update \
-            sudo apt install -y \
-            libsqlite3-dev \
-            zlib1g-dev \
-            libmagickwand-dev --no-install-recommends \
-            libfreetype6-dev \
-            libjpeg62-turbo-dev \
-            libpng-dev
+            sudo apt update
