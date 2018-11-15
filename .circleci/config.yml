@@ -6,6 +6,7 @@ jobs:
     steps:
         - run: |
             sudo apt update &&
+            echo update \
             sudo apt install -y \
             libsqlite3-dev \
             zlib1g-dev \
