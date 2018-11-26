@@ -1,16 +1,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node
-    steps:
-      - run: date +%F > date
-      - restore_cache:
-          keys:
-            # Find a cache corresponding to this specific package-lock.json checksum
-            # cache should skip now
-            - date-cache-{{ checksum "date" }}
-      - save_cache:
-            key: date-cache-{{ checksum "date" }}
-            paths:
-                - "/test"
+      macos:
+        xcode: 9.0.0
+      steps:
+          - run: echo "hello world"
