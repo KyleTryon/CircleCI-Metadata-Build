@@ -8,7 +8,7 @@ jobs:
       - restore_cache:
           keys:
             # Find a cache corresponding to this specific package-lock.json checksum
-            # cache should skip
+            # cache should skip now
             - date-cache-{{ checksum "date" }}
       - save_cache:
             key: date-cache-{{ checksum "date" }}
