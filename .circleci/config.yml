@@ -1,10 +1,12 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.2-node-browsers
+      - image: circleci/node
     steps:
-        - run: |
-            sudo apt update
-
-            #[ci skip]
+      - checkout
+      - run: date > date
+      - save_cache:
+            key: date-cache-{{ checksum "date" }}
+            paths:
+                - "/"
