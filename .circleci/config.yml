@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - run: echo "x" > date
+      - run: echo "y" > date
       - restore_cache:
           keys:
             # Find a cache corresponding to this specific package-lock.json checksum
