@@ -4,7 +4,12 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - run: date > date
+      - run: echo "x" > date
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json checksum
+            # when this file is changed, this key will fail
+            - v1-npm-deps-{{ checksum "date" }}
       - save_cache:
             key: date-cache-{{ checksum "date" }}
             paths:
