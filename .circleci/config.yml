@@ -8,7 +8,7 @@ jobs:
       - restore_cache:
           keys:
             # Find a cache corresponding to this specific package-lock.json checksum
-            # when this file is changed, this key will fail
+            # cache should skip
             - v1-npm-deps-{{ checksum "date" }}
       - save_cache:
             key: date-cache-{{ checksum "date" }}
