@@ -1,17 +1,11 @@
 version: 2.1
+
+orbs:
+  orb: sandbox/metatestorb@dev:testme
+
 jobs:
   build:
-      macos:
-        xcode: 9.0.0
-      steps:
-          - run: echo "hello world"
-  linux:
-      docker:
-        - image: circleci/node
-      steps:
-          - run: echo "hello world"
-workflows:
-  thisone:
-    jobs:
-      - build
-      - linux
+    docker:
+      - image: singapore/lint-condo
+    steps:
+      - run: orb/echo
