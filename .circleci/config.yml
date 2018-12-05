@@ -1,11 +1,8 @@
 version: 2.1
 
-orbs:
-  orb: sandbox/metatestorb@dev:testme
-
 jobs:
   build:
     docker:
-      - image: singapore/lint-condo
+      - image: circleci/ruby:2.5.3-node-browsers
     steps:
-      - run: orb/echo
+      - run: echo "hello"
