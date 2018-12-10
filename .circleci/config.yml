@@ -3,8 +3,6 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu:18.04
+      - image: circleci/node:8-browsers
     steps:
-      - run: echo "hello"
-      - run: dpkg --print-foreign-architectures
-      - run: cat /proc/cpuinfo && lscpu
+      - run: npm -v
