@@ -6,3 +6,4 @@ jobs:
       - image: circleci/node:8-browsers
     steps:
       - run: npm -v
+      - run: echo "skip me"
