@@ -3,7 +3,11 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:8-browsers
+      - image: alpine
     steps:
-      - run: npm -v
-      - run: echo "skip me"
+      - run: |
+          if [ 1 = 1 ]; then
+            if [ 2 = 2 ]; then
+              echo hello
+            fi
+          fi
