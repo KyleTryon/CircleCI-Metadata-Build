@@ -5,4 +5,4 @@ jobs:
     docker:
       - image: alpine
     steps:
-      - run: apk install wget 
+      - run: apk add wget 
