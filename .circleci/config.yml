@@ -6,4 +6,4 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run: ./runthis.sh
+      - run: sudo ./runthis.sh
