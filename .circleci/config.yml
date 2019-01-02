@@ -5,8 +5,9 @@ jobs:
     docker:
       - image: node
     steps:
-      - run: |
-        while true; do
-          sleep 10s
-          echo date 1>&2
-        done
+      - run:
+          command:
+            while true; do
+              sleep 10s
+              echo date 1>&2
+            done
