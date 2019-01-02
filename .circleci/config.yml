@@ -3,6 +3,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: alpine
+      - image: node
     steps:
-      - run: apk add wget 
+      - run: |
+        while true; do
+          sleep 10s
+          echo date 1>&2
+        done
