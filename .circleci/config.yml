@@ -6,7 +6,11 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run: 
+      - run:
+          no_output_timeout: 1m
+          DebugFilename: ~/debugfile.txt
           command: |
             chmod +x runthis.sh
             ./runthis.sh
+      - store_artifacts:
+          path: ~/
