@@ -7,7 +7,7 @@ jobs:
     steps:
       - run:
           command:
-            while [ true ]
+            while true
             do
               sleep 10
               echo date 1>&2
