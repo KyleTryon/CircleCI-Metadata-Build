@@ -5,10 +5,4 @@ jobs:
     docker:
       - image: node
     steps:
-      - run:
-          command:
-            while true
-            do
-              sleep 10
-              echo date 1>&2
-            done
+      - run: ./runthis.sh
