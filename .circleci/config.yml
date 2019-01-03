@@ -7,4 +7,4 @@ jobs:
     steps:
       - checkout
       - run:
-          command: circleci step hault
+          command: circleci step halt
