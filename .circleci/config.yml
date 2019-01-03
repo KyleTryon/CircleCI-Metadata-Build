@@ -7,10 +7,4 @@ jobs:
     steps:
       - checkout
       - run:
-          no_output_timeout: 1m
-          debug_filename: "~/debugfile.txt"
-          command: |
-            chmod +x runthis.sh
-            ./runthis.sh
-      - store_artifacts:
-          path: ~/
+          command: circleci step hault
