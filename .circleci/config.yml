@@ -6,5 +6,6 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run:
-          command: circleci step halt
+      - setup_remote_docker:
+          version: 17.03.0-ce
+      - run: docker --version
