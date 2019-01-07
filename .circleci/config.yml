@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node
+      - image: circleci/elixir:1.7.3-node-browsers
     steps:
       - checkout
       - setup_remote_docker
