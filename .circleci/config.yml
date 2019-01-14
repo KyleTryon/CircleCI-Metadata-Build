@@ -1,12 +1,92 @@
-version: 2.1
-# test
+version: 2
 jobs:
-  build:
+  test:
     docker:
-      - image: circleci/elixir:1.7.3-node-browsers
+      - image: circleci/python:3.7
+        environment:
+          PIPENV_VENV_IN_PROJECT: 1
+          DATABASE_URL: postgresql://pensa@localhost:5432/recognition_engine?sslmode=disable
+          ENV: local-ci
+
+      - image: circleci/postgres:10.5-ram
+        environment:
+          POSTGRES_USER: sdfsdf
+          POSTGRES_DB: sdfsdf
+
     steps:
       - checkout
-      - setup_remote_docker
+
+      # setup postgres
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client
+
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run: |
+          sudo curl -fsSL -o /usr/local/bin/dbmate https://github.com/amacneil/dbmate/releases/download/v1.4.1/dbmate-linux-amd64
+          sudo chmod +x /usr/local/bin/dbmate
+
+      - run: |
+          cd schema/recognition_engine
+          dbmate migrate
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - platform-{{ checksum \"Pipfile\" }}
+          # fallback to using the latest cache if no exact match is found
+          - platform-
+
       - run:
+          name: install dependencies
           command: |
-            docker-compose up
+            pip install pipenv
+            pipenv --python 3.7
+            pipenv sync --dev
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: platform-{{ checksum \"Pipfile\" }}
+
+      - run:
+          name: Tests
+          command: |
+            pipenv run make coverage
+
+  docker:
+    docker:
+      - image: circleci/python:3.7
+        environment:
+          PIPENV_VENV_IN_PROJECT: 1
+
+    steps:
+    - checkout
+
+    - run:
+        name: install dependencies
+        command: |
+          pip install pipenv
+          pipenv --python 3.7
+          pipenv sync --dev
+
+    - setup_remote_docker:
+        docker_layer_caching: true
+
+    - run:
+        name: Build Docker images
+        command: |
+          echo \"CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM\"
+          if [ -z \"$CIRCLE_BUILD_NUM\" ]; then
+            echo \"This is a local build. Use sudo for docker\"
+            sudo make docker-build
+          else
+            make docker-build
+          fi
+
+workflows:
+  version: 2
+  test_and_docker:
+    jobs:
+      - test
+      - docker
