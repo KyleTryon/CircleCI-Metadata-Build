@@ -12,4 +12,3 @@ workflows:
         requires:
           - cypress/install
         start: 'npm start:staging'
-        wait-on: 'http://localhost:3001'
