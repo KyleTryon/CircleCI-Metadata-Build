@@ -11,4 +11,3 @@ workflows:
       - cypress/run:
         requires:
           - cypress/install
-        start: 'npm start:staging'
