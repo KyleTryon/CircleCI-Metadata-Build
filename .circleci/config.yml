@@ -1,13 +1,14 @@
 version: 2.1
 orbs:
-  # use Cypress orb from CircleCI registry
   cypress: cypress-io/cypress@1.4.0
-
 workflows:
-  # version: 2.1
   build:
     jobs:
       - cypress/install
       - cypress/run:
-        requires:
-          - cypress/install
+          requires:
+            - cypress/install
+          record: true
+          parallel: true
+          parallelism: 2
+          group: 2 machines
