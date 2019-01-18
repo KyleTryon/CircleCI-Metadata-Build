@@ -1,14 +1,21 @@
-version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1.4.0
-workflows:
-  build:
-    jobs:
-      - cypress/install
-      - cypress/run:
-          requires:
-            - cypress/install
-          parallel: true
-          parallelism: 3
-          start: 'npm start:staging'
-          wait-on: 'http://localhost:3001'
+version: 2 # use CircleCI 2.0
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    
+    working_directory: ~/project # directory where steps will run
+
+    docker: # run the steps with Docker
+      - image: circleci/openjdk:8-jdk-browsers # ...with this image as the primary container; this is where all `steps` will run
+
+    steps: # a collection of executable commands
+
+      - checkout # check out source code to working directory
+      
+      - run: javac hello.java
+      - run: java hello
+      
+      
+      - store_artifacts: # store the uberjar as an artifact
+      # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: ~/project/
+      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples    
