@@ -5,7 +5,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: sleep 30
+      - run: sleep 10
   test:
     docker:
       - image: cimg/base:stable
@@ -27,7 +27,6 @@ workflows:
           filters:
               branches:
                 only:
-                  - master
                   - /rc-.*/
           requires: 
             - build
@@ -35,7 +34,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
                 - /rc-.*/
           requires: 
             - test
