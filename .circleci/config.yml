@@ -33,9 +33,9 @@ workflows:
             - build
       - deploy:
           filters:
-          branches:
-            only:
-              - master
-              - /rc-.*/
+            branches:
+              only:
+                - master
+                - /rc-.*/
           requires: 
             - test
