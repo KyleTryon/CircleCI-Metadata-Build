@@ -24,13 +24,15 @@ workflows:
     jobs:
       - build
       - test:
-          branches:
-            only:
-              - master
-              - /rc-.*/
+          filter:
+              branches:
+                only:
+                  - master
+                  - /rc-.*/
           requires: 
             - build
       - deploy:
+          filter:
           branches:
             only:
               - master
