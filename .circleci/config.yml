@@ -24,9 +24,16 @@ workflows:
     jobs:
       - build
       - test:
-          type: approval
+          branches:
+            only:
+              - master
+              - /rc-.*/
           requires: 
             - build
       - deploy:
+          branches:
+            only:
+              - master
+              - /rc-.*/
           requires: 
             - test
