@@ -24,7 +24,7 @@ workflows:
     jobs:
       - build
       - test:
-          filter:
+          filters:
               branches:
                 only:
                   - master
@@ -32,7 +32,7 @@ workflows:
           requires: 
             - build
       - deploy:
-          filter:
+          filters:
           branches:
             only:
               - master
