@@ -1,10 +1,9 @@
 version: 2.1
 orbs:
   orb-tools: circleci/orb-tools@dev:alpha
-jobs:
-  build:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
+
+workflows:
+  version: 2
+  test-shellcheck:
+    jobs:
       - orb-tools/shellcheck
