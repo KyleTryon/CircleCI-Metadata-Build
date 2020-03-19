@@ -1,0 +1,11 @@
+steps:
+  - checkout
+  - setup_remote_docker
+  - run:
+      command: |
+        echo 2
+  - run: echo 3
+  - run:
+      shell: /bin/python
+      command: |
+        echo 4

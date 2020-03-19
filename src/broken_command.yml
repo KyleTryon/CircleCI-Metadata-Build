@@ -1,0 +1,17 @@
+steps:
+  - checkout
+  - setup_remote_docker
+  - run:
+      command: |
+        echo 2
+  - run: echo 3
+  - run:
+      shell: /bin/python
+      command: |
+        echo 4
+  - run:
+      command: |
+        echo 5
+        if [[ $test = 7]]
+          echo "This is a broken shellcheck step"
+        fi
