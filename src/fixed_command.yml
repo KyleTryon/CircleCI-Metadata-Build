@@ -7,6 +7,6 @@ steps:
   - run: echo 3
   - run:
       command: |
-        if [[ "y" == "x" ]]; then
+        if [[ "$my_var" == "x" ]]; then
           echo hi
         fi
