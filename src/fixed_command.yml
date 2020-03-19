@@ -7,6 +7,6 @@ steps:
   - run: echo 3
   - run:
       command: |
-        if [[$this =x ]]
-        echo hi
+        if [[ $this == "x" ]]; then
+          echo hi
         fi
