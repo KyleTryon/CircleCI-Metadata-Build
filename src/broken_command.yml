@@ -6,6 +6,7 @@ steps:
         echo 2
   - run: echo 3
   - run:
-      shell: /bin/python
       command: |
-        echo 4
+        if [[$this =x ]]
+        echo hi
+        fi
