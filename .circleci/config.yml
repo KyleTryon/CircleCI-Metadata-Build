@@ -1,12 +1,10 @@
 version: 2.1
-# test
+orbs:
+  orb-tools: circleci/orb-tools@dev:alpha
 jobs:
   build:
     docker:
-      - image: circleci/elixir:1.7.3-node-browsers
+      - image: cimg/base:stable
     steps:
       - checkout
-      - setup_remote_docker
-      - run:
-          command: |
-            docker-compose up
+      - orb-tools/shellcheck

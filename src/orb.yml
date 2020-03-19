@@ -1,0 +1,17 @@
+version: 2.1
+# test
+jobs:
+  build:
+    docker:
+      - image: circleci/elixir:1.7.3-node-browsers
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          command: |
+            echo 2
+      - run: echo 3
+      - run:
+          shell: /bin/python
+          command: |
+            echo 4
