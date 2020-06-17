@@ -1,11 +1,7 @@
 version: 2.1
-orbs:
-  orb-tools: circleci/orb-tools@dev:alpha
-# multiple commit test
-# second commit
-# Third
-workflows:
-  version: 2
-  test-shellcheck:
-    jobs:
-      - orb-tools/shellcheck
+jobs:
+  build:
+    machine: true
+    steps:
+      - run:
+          command: echo "Running SSH"
