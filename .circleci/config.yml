@@ -6,7 +6,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - run: echo test 1
+      - run: echo test 2
       - slack/notify:
             event: always
             custom: |
