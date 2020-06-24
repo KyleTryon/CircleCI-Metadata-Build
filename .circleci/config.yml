@@ -1,9 +1,25 @@
 version: 2.1
+orbs:
+  slack: circleci/slack@dev:v2Test
 jobs:
   build:
     docker:
-      - image: github/super-linter
+      - image: cimg/base:stable
     steps:
-      - checkout
-      - run:
-          command: echo "Running SSH"
+      - slack/notify:
+            event: always
+            custom: |
+              {
+                "blocks": [
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "plain_text",
+                        "text": "*This is a text notification*",
+                        "emoji": true
+                      }
+                    ]
+                  }
+                ]
+              }
