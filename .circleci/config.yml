@@ -1,26 +1,20 @@
 version: 2.1
-orbs:
-  slack: circleci/slack@dev:v2Test
 jobs:
   build:
     docker:
       - image: cimg/base:stable
     steps:
       - run: echo test 2
-      - slack/notify:
-            event: always
-            custom: |
-              {
-                "blocks": [
-                  {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "plain_text",
-                        "text": "*This is a text notification*",
-                        "emoji": true
-                      }
-                    ]
-                  }
-                ]
-              }
+      - run:
+          command: |
+            echo Running test
+            set +e
+            mkdir -p /tmp/test-results
+            make test
+
+      - run:
+          shell: /bin/sh
+          command: |
+            echo Running test
+            mkdir -p /tmp/test-results
+            make test
