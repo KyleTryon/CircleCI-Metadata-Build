@@ -9,11 +9,11 @@ jobs:
           command: |
             echo Running test
             set +e
-            mkdir -p /tmp/test-results/x/y
+            mkdir /tmp/test-results/x/y
 
       - run:
           shell: /bin/sh
           command: |
             echo Running test
-            mkdir -p /tmp/test-results/b/c
+            mkdir /tmp/test-results/b/c
 
