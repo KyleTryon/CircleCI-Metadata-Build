@@ -8,12 +8,17 @@ jobs:
       - run:
           command: |
             echo Running test
-            set +e
-            mkdir /tmp/test-results/x/y
-
+  hold:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: echo test 2
       - run:
-          shell: /bin/sh
           command: |
-            echo Running test
-            mkdir /tmp/test-results/b/c
+            echo Running hold
+workflows:
+  test:
+    jobs:
+      - hold
+      - build
 
