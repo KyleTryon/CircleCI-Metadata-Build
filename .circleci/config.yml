@@ -1,27 +1,12 @@
 version: 2.1
+executors:
+  test:
+    docker:
+      - image: cimg/base:stable
 jobs:
   build:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:lts
+    executor: test
     steps:
-      - run: echo test 2
-      - run:
-          command: |
-            echo Running test
-  hold:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run: echo test 2
-      - run:
-          command: |
-            echo Running hold
-workflows:
-  test:
-    jobs:
-      - hold:
-          type: approval
-      - build:
-          requires:
-            - hold
-
+      - run: echo "hello"
