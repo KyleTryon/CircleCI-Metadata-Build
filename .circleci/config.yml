@@ -1,12 +1,10 @@
 version: 2.1
-executors:
-  test:
-    docker:
-      - image: cimg/base:stable
 jobs:
   build:
     docker:
-      - image: cimg/node:lts
-    executor: test
+      - image: cimg/base:stable
     steps:
-      - run: echo "hello"
+      - run:
+          command: echo $TEST
+          environment:
+            TEST: '{"hello": true, "greeting": "welcome"}'
