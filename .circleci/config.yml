@@ -5,6 +5,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-          command: echo $TEST
+          command: |
+            echo ${TEST}
+            echo ${TEST2}
           environment:
+            TEST2: "test2"
             TEST: '{"hello": true, "greeting": "welcome"}'
