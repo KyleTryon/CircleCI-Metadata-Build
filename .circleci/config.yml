@@ -1,6 +1,10 @@
 version: 2.1
 jobs:
   build:
+    parameters:
+      object:
+        default: '{"hello": true, "greeting": "welcome"}'
+        type: string
     docker:
       - image: cimg/base:stable
     steps:
@@ -10,4 +14,4 @@ jobs:
             echo ${TEST2}
           environment:
             TEST2: "test2"
-            TEST: '{"hello": true, "greeting": "welcome"}'
+            TEST: '<<parameters.object>>'
