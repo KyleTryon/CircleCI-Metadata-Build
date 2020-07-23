@@ -10,8 +10,8 @@ jobs:
     steps:
       - run:
           command: |
-            echo ${TEST}
-            echo ${TEST2}
-          environment:
-            TEST2: "test2"
-            TEST: '<<parameters.object>>'
+            TESTME="2"
+            export $TESTME >> $BASH_ENV
+            cat $BASH_ENV
+      - run: echo $TESTME
+
