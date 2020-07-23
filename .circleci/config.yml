@@ -11,7 +11,7 @@ jobs:
       - run:
           command: |
             TESTME="2"
-            echo "export TESTME=${TESTME} >> $BASH_ENV"
+            echo "export TESTME=${TESTME}" >> $BASH_ENV
             cat $BASH_ENV
       - run: echo $TESTME
 
