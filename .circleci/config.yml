@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           environment:
-            TESTME: ${!HOME}
-          command: echo $TESTME
+            TESTME: $HOME
+          command: echo ${!TESTME}
 
 
