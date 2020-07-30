@@ -9,9 +9,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-          command: |
-            TESTME="2"
-            echo "export TESTME=${TESTME}" >> $BASH_ENV
-            cat $BASH_ENV
-      - run: echo $TESTME
+          environment:
+            TESTME: $HOME
+          command: echo $TESTME
+
 
