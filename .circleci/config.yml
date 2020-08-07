@@ -9,8 +9,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-          environment:
-            TESTME: $HOME
-          command: echo ${!TESTME}
+          working_directory: $HOME
+          command: pwd
 
 
