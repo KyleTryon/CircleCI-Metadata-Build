@@ -1,4 +1,6 @@
-version: 2.1
+version: '2.1'
+orbs:
+  shellcheck: circleci/shellcheck@2.0.0
 jobs:
   build:
     parameters:
@@ -8,8 +10,8 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout
+      - shellcheck/install
       - run:
-          working_directory: $HOME
-          command: pwd
-
-
+          command: shellcheck ./
+          name: Run Shellcheck command
