@@ -2,8 +2,12 @@ version: '2.1'
 
 jobs:
   build:
-    machine:
-      image: ubuntu-1604:202007-01
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
-      - run: lsb_release -a
+      - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      - run: test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+      - run: test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+      - run: test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> $BASH_ENV
+      - run: echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> $BASH_ENV
