@@ -1,17 +1,9 @@
 version: '2.1'
-orbs:
-  shellcheck: circleci/shellcheck@2.0.0
+
 jobs:
   build:
-    parameters:
-      object:
-        default: '{"hello": true, "greeting": "welcome"}'
-        type: string
-    docker:
-      - image: cimg/base:stable
+    machine:
+      image: ubuntu-1604:202007-01
     steps:
       - checkout
-      - shellcheck/install
-      - run:
-          command: shellcheck ./
-          name: Run Shellcheck command
+      - run: lsb_release -a
