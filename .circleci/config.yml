@@ -17,6 +17,8 @@ jobs:
           name: Setup dependencies
           command: brew install unixodbc gnupg coreutils
 
+      - run: mkdir ~/.config
+
       - node/install:
           install-yarn: true
           node-version: "12.13.1"
