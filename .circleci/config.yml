@@ -5,42 +5,18 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: cimg/base:stable
+    macos:
+      xcode: '11.4'
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+
     steps:
       - checkout
+
       - run:
-          name: test 1
-          command: |
-            cd ../
-            pwd
-      - run:
-          name: test 2
-          environment:
-            PARAM_LOC: "../"
-          command: |
-            cd "$PARAM_LOC"
-            pwd
-      - run:
-          name: test 3
-          command: |
-            cat ./README.md
-      - run:
-          name: test 4
-          environment:
-            PARAM_RM: "./README.md"
-          command: |
-            echo "$PARAM_RM"
-            cat $PARAM_RM
-      - run:
-          name: test 5
-          environment:
-            PARAM_RM: "./README.md"
-          command: |
-            echo "$PARAM_RM"
-            cat "$PARAM_RM"
-workflows:
-  version: 2
-  build:
-    jobs:
-      - build
+          name: Setup dependencies
+          command: brew install unixodbc gnupg coreutils mmv
+
+      - node/install:
+          install-yarn: true
+          node-version: "12.13.1"
