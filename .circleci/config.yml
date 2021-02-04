@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - checkout
+      - run: echo hello
 
       - run:
           name: Setup dependencies
