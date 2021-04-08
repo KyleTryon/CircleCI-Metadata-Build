@@ -1,23 +1,26 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.1.0
-
 jobs:
-  build:
-    macos:
-      xcode: '11.4'
-    environment:
-      HOMEBREW_NO_AUTO_UPDATE: 1
-
+  test1:
+    docker:
+      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
     steps:
-      - checkout
       - run: echo hello
-
-      - run:
-          name: Setup dependencies
-          command: brew install unixodbc gnupg coreutils mmv
-
-      - node/install:
-          install-yarn: true
-          node-version: "12.13.1"
+  test2:
+    docker:
+      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
+        entrypoint: "top"
+    steps:
+      - run: echo hello
+  test3:
+    docker:
+      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
+        entrypoint: ""
+    steps:
+      - run: echo hello
+workflows:
+  myWorkflow:
+    jobs:
+      - test1
+      - test2
+      - test3
