@@ -13,8 +13,8 @@ jobs:
           event: pass
           template: basic_success_1
 workflows:
-  deploy_and_notify:
+  build_and_notify:
     jobs:
-      - deploy:
+      - build:
           context:
             - SLACK
