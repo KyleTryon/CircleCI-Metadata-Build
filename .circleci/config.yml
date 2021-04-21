@@ -1,26 +1,20 @@
 version: 2.1
-
+orbs:
+  slack: circleci/slack@4.4
 jobs:
-  test1:
+  build:
     docker:
-      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
+      - image: cimg/base:stable
     steps:
-      - run: echo hello
-  test2:
-    docker:
-      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
-        entrypoint: "top"
-    steps:
-      - run: echo hello
-  test3:
-    docker:
-      - image: us-docker.pkg.dev/stackpulse/public/cli:latest
-        entrypoint: ""
-    steps:
-      - run: echo hello
+      - checkout
+      - run: echo Hello
+      - slack/notify:
+          channel: ABCXYZ
+          event: pass
+          template: basic_success_1
 workflows:
-  myWorkflow:
+  deploy_and_notify:
     jobs:
-      - test1
-      - test2
-      - test3
+      - deploy:
+          context:
+            - SLACK
