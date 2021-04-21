@@ -9,7 +9,6 @@ jobs:
       - checkout
       - run: echo Hello
       - slack/notify:
-          channel: ABCXYZ
           event: pass
           template: basic_success_1
 workflows:
