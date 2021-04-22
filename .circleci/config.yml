@@ -10,7 +10,7 @@ jobs:
       - run: echo Hello
       - slack/notify:
           event: pass
-          template: basic_success_1
+          template: TEMPLATE_1
 workflows:
   build_and_notify:
     jobs:
