@@ -1,19 +1,10 @@
 version: 2.1
 orbs:
-  slack: circleci/slack@4.4
-jobs:
-  build:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run: echo Hello
-      - slack/notify:
-          event: pass
-          template: TEMPLATE_1
+  github-cli: circleci/github-cli@dev:alpha
 workflows:
   build_and_notify:
     jobs:
-      - build:
-          context:
-            - SLACK
+      - github-cli/release:
+          tag: "1.0.0"
+          title: "A test release"
+          context: GITHUB
