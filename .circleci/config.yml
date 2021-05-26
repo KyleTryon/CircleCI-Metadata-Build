@@ -1,11 +1,17 @@
 version: 2.1
-orbs:
-  github-cli: circleci/github-cli@dev:alpha
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json checksum
+            # when this file is changed, this key will fail
+            # Find the most recently generated cache used from any branch
+            - v1-npm-deps-{{arch}}
+      - run: echo "hello"
 workflows:
   build_and_notify:
     jobs:
-      - github-cli/release:
-          tag: "2.0.0"
-          title: "Version 2: A Major Change"
-          notes-file: "./changelog.md"
-          context: GITHUB
+      - build
