@@ -3,13 +3,8 @@ jobs:
   build:
     docker:
       - image: cimg/base:stable
+        resource_class: medium
     steps:
-      - restore_cache:
-          keys:
-            # Find a cache corresponding to this specific package-lock.json checksum
-            # when this file is changed, this key will fail
-            # Find the most recently generated cache used from any branch
-            - v1-npm-deps-{{arch}}
       - run: echo "hello"
 workflows:
   build_and_notify:
