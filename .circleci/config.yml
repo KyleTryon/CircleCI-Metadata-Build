@@ -3,7 +3,7 @@ executors:
   my-exec:
     docker:
       - image: cimg/base:stable
-    resource_class: medium
+    resource_class: large
 
 jobs:
   build:
