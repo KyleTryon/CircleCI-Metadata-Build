@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/base:stable
-        resource_class: medium
+      resource_class: medium
     steps:
       - run: echo "hello"
 workflows:
