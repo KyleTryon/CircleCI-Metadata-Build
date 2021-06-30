@@ -1,16 +1,29 @@
 version: 2.1
+setup: false
 executors:
-  my-exec:
+  my-executor:
     docker:
-      - image: cimg/base:stable
-    resource_class: large
-
+    - image: cimg/base:stable
+    resource_class: medium
 jobs:
-  build:
-    executor: my-exec
+  flow:
+    executor:
+      name: my-executor
     steps:
-      - run: echo "hello"
+    - persist_to_workspace:
+        root: workspace
+        paths:
+        - echo-output
+  downstream:
+    executor:
+      name: my-executor
+    steps:
+    - attach_workspace:
+        at: "/tmp/workspace"
 workflows:
-  build_and_notify:
+  btd:
     jobs:
-      - build
+    - flow: {}
+    - downstream:
+        requires:
+        - flow
