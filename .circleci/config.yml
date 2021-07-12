@@ -1,29 +1,13 @@
 version: 2.1
-setup: false
-executors:
-  my-executor:
-    docker:
-    - image: cimg/base:stable
-    resource_class: medium
 jobs:
-  flow:
-    executor:
-      name: my-executor
+  test:
+    docker:
+      - image: cimg/node:lts
     steps:
-    - persist_to_workspace:
-        root: workspace
-        paths:
-        - echo-output
-  downstream:
-    executor:
-      name: my-executor
-    steps:
-    - attach_workspace:
-        at: "/tmp/workspace"
+      - checkout
+      - run: echo "Hello World"
 workflows:
-  btd:
+  test-deploy:
     jobs:
-    - flow: {}
-    - downstream:
-        requires:
-        - flow
+      - test
+
