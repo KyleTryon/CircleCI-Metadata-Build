@@ -1,13 +1,20 @@
 version: 2.1
 jobs:
-  test:
+  build:
     docker:
-      - image: cimg/node:lts
+    - image: cimg/node:lts
     steps:
       - checkout
-      - run: echo "Hello World"
-workflows:
-  test-deploy:
-    jobs:
-      - test
-
+      - run:
+          name: "'run' statements can actually contain a 'name' and 'command' argument as well"
+          command: |
+            echo "You can even have multiline commands."
+      - restore_cache:
+          keys:
+          - v1-dependencies-
+      - run: mkdir ~/cache/
+      - run: echo "testfile" > ~/cache/log.txt
+      - save_cache:
+          key: v1-dependencies-
+          paths:
+            - ~/cache
